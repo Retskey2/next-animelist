@@ -1,9 +1,8 @@
 module.exports = {
-important: true,
-purge: {
-    content: ["./pages/**/*.tsx", "./components/**/*.tsx"],
-    // These options are passed through directly to PurgeCSS
-  },
+  content: [
+      "./pages/**/*.{js,ts,jsx,tsx}",
+      "./components/**/*.{js,ts,jsx,tsx}",
+    ],
   theme: {
       screens: {
             'tb': {'max': '760px'},
