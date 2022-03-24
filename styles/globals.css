@@ -12,6 +12,7 @@ body {
   color: white;
   font-family: Overpass,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
   overflow-x: hidden;
+  height:100%
 }
 
 a {
@@ -29,3 +30,13 @@ input:checked + div {
 input:checked + div svg {
   @apply block;
 }
+
+.without-ring {
+  @apply focus:ring-0 focus:ring-offset-0;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+

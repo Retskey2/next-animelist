@@ -1,16 +1,13 @@
 import * as React from 'react';
-import {useEffect, useState} from "react";
-import Menu from "../image/icons8-hamburger-menu-100.svg";
-import Logo from "../image/logo.svg"
-import useMedia from 'use-media';
 import Link from 'next/link'
-import {useRouter} from "next/router";
+import Image from "next/image";
+import {useEffect, useState} from "react";
+import useMedia from 'use-media';
 
 export const Header: React.FC = () => {
     const isWide = useMedia({minWidth: '1024px'});
     const [visibleBrowse, setVisibleBrowse] = useState(false)
     const [visibleMenu, setVisibleMenu] = useState(false);
-    const router = useRouter();
 
     const handlerModalWindows = () => {
         setVisibleBrowse(!visibleBrowse)
@@ -27,13 +24,17 @@ export const Header: React.FC = () => {
         {text: 'Forum', path: '/forum/overview'},
     ];
 
-
     return (
         <>
             <div className="bg-regal-gray w-100vh h-16 text-sm flex justify-center items-center text-sm lp:hidden">
                 <div className="flex items-center justify-between min-w-[60%]">
                     <Link href="/">
-                        <Logo className="cursor-pointer"/>
+                        <a className="cursor-pointer">
+                            <Image src="/logo.svg"
+                                   alt="logo"
+                                   width="50px"
+                                   height="50px"/>
+                        </a>
                     </Link>
                     <ul className="flex items-center">
                         {menu.map(({text, path}) =>
@@ -83,12 +84,15 @@ export const Header: React.FC = () => {
             {visibleMenu ?
                 <div
                     onClick={() => handlerMenu()}
-                    className="hidden lp:flex h-14 w-14 bg-regal-gray rounded-md absolute right-[20px] bottom-[25px]
+                    className="hidden lp:flex h-14 w-14 bg-regal-gray rounded-md fixed right-[40px] bottom-[20px]
                     cursor-pointer items-center justify-center shadow-wt z-50">
-                    <Menu/>
+                    <Image src="/Menu.svg"
+                           alt="menu"
+                           width="40px"
+                           height="40px"/>
                 </div> :
                 <div
-                    className="hidden lp:flex absolute right-[20px] bottom-[20px] shadow-regal bg-regal-gray w-[210px] h-12 rounded-md p-2 shadow-wt"
+                    className="hidden z-50 lp:flex fixed right-[20px] bottom-[20px] shadow-regal bg-regal-gray w-[210px] h-12 rounded-md p-2 shadow-wt"
                     onClick={() => handlerMenu()}>
                     menu
                 </div>
